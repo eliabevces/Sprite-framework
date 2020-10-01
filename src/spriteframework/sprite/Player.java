@@ -17,7 +17,7 @@ public class Player extends Sprite {
         loadImage(playerdir);
 		getImageDimensions();
 		resetState();
-		this.Twodimensions = Twodimension;
+		this.Twodimensions = Twodimension; 
     }
 
     protected void loadImage (String playerdir) {
@@ -32,7 +32,7 @@ public class Player extends Sprite {
         x += dx;
         y += dy;
         
-        if(Twodimensions == true) {
+        if(Twodimensions == true) { //permite mover para cima e para lados
         	if (x <= 2) {
 
                 x = 2;
@@ -54,7 +54,7 @@ public class Player extends Sprite {
             }
         }
         
-        if(Twodimensions == false) {
+        if(Twodimensions == false) { //permite mover apenas  para lados
             	if (x <= 2) {
 
                     x = 2;
@@ -77,7 +77,7 @@ public class Player extends Sprite {
 
         int key = e.getKeyCode();
         
-        if(Twodimensions == true) {
+        if(Twodimensions == true) { //permite mover para cima e para lados
         	if (key == KeyEvent.VK_LEFT) {
 
                 dx = -2;
@@ -97,7 +97,7 @@ public class Player extends Sprite {
             }
         }
         
-        if(Twodimensions == false) {
+        if(Twodimensions == false) { //permite mover apenas  para lados
         	if (key == KeyEvent.VK_LEFT) {
 
                 dx = -2;
