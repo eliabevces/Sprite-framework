@@ -24,7 +24,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
 
 
 	public FreezeMonsterBoard(String playerdir, Boolean Twodimension) {
-		super(playerdir, Twodimension);
+		super(playerdir, Twodimension, CommonsfreezeMonster.ALIEN_WIDTH, CommonsfreezeMonster.ALIEN_HEIGHT, CommonsfreezeMonster.BOARD_WIDTH, CommonsfreezeMonster.BOARD_HEIGHT, CommonsfreezeMonster.GROUND);
 		// TODO Auto-generated constructor stub
 	}
 

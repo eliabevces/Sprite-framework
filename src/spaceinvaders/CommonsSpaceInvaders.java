@@ -1,10 +1,10 @@
 package spaceinvaders;
 
 
-public interface Commons extends spriteframework.Commons{
+public interface CommonsSpaceInvaders extends spriteframework.Commons{
 
     int BOMB_HEIGHT = 5;
-
+    int GROUND = 290;
     int ALIEN_HEIGHT = 12;
     int ALIEN_WIDTH = 12;
     int ALIEN_INIT_X = 150;
@@ -15,4 +15,6 @@ public interface Commons extends spriteframework.Commons{
     int CHANCE = 5;
     int PLAYER_WIDTH = 15;
     int PLAYER_HEIGHT = 10;
+    int BOARD_WIDTH = 358;
+    int BOARD_HEIGHT = 350;
 }

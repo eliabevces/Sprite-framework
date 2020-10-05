@@ -7,12 +7,12 @@ public abstract class MainFrame extends JFrame  {
     // hotspot
     protected abstract AbstractBoard createBoard();
     
-    public MainFrame(String t, String playerimagedir) {
+    public MainFrame(String t, String playerimagedir, int boardWidth, int boardHeight) {
           
         add(createBoard());
 		
 		setTitle(t);
-		setSize(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
+		setSize(boardWidth, boardHeight);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);

@@ -37,7 +37,10 @@ public abstract class AbstractBoard extends JPanel {
     // define global control vars   
 //    private int direction = -1;
 //    private int deaths = 0;
-
+    protected int boardwidth;
+    protected int boardheight;
+    protected int ground;
+    
     private int numberPlayers;  // to do - future use
     protected boolean inGame = true;
 //    private String explImg = "src/images/explosion.png";
@@ -55,9 +58,12 @@ public abstract class AbstractBoard extends JPanel {
     protected abstract void update();
     protected abstract void processOtherSprites(Player player, KeyEvent e);
 
-    public AbstractBoard(String playerdir, Boolean Twodimension) {
-        initBoard(playerdir, Twodimension);
-        createPlayers(playerdir, Twodimension);
+    public AbstractBoard(String playerdir, Boolean Twodimension,  int widthplayer, int heightplayer, int boardwidth,int boardheight, int ground) {
+    	this.boardwidth = boardwidth;
+    	this.boardheight = boardheight;
+    	this.ground = ground;
+        initBoard(playerdir, Twodimension,  widthplayer,  heightplayer, boardwidth, boardheight);
+        createPlayers(playerdir, Twodimension, widthplayer, heightplayer);
 		        numberPlayers = 1;
 		        badSprites = new LinkedList<BadSprite>();
 		        createBadSprites();
@@ -65,18 +71,17 @@ public abstract class AbstractBoard extends JPanel {
 		//        shot = new Shot();
     }
 
-
-	private void initBoard(String playerdir, Boolean Twodimension) {
+	private void initBoard(String playerdir, Boolean Twodimension, int widthplayer, int heightplayer, int boardwidth,int boardheight) {
 
     	addKeyListener(new TAdapter());
     	setFocusable(true);
-    	d = new Dimension(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
+    	d = new Dimension(boardwidth,boardheight);
     	setBackground(Color.black);
 
     	timer = new Timer(Commons.DELAY, new GameCycle());
     	timer.start();
 
-    	createPlayers(playerdir, Twodimension);
+    	createPlayers(playerdir, Twodimension,  widthplayer,  heightplayer);
     	numberPlayers = 1;
     	badSprites = new LinkedList<BadSprite>();
     	createBadSprites();
@@ -85,13 +90,13 @@ public abstract class AbstractBoard extends JPanel {
     }
 
 
-    protected void createPlayers(String playerdir, Boolean Twodimension) {
+    protected void createPlayers(String playerdir, Boolean Twodimension, int w, int h) {
 		players = new LinkedList<Player>();
-        players.add(createPlayer(playerdir, Twodimension));
+        players.add(createPlayer(playerdir, Twodimension, w, h));
 	}
 	
-	protected Player createPlayer(String playerdir, Boolean Twodimension ) {
-		return new Player(playerdir, Twodimension);
+	protected Player createPlayer(String playerdir, Boolean Twodimension, int w, int h) {
+		return new Player(playerdir, Twodimension, w, h, boardwidth, boardheight);
 	}
 
    public Player getPlayer(int i) {
@@ -160,8 +165,8 @@ public abstract class AbstractBoard extends JPanel {
 
         if (inGame) {
 
-            g.drawLine(0, Commons.GROUND,
-                    Commons.BOARD_WIDTH, Commons.GROUND);
+            g.drawLine(0, ground,
+                    boardwidth, ground);
 
             drawBadSprites(g);
             drawPlayers(g);
@@ -182,20 +187,20 @@ public abstract class AbstractBoard extends JPanel {
     private void gameOver(Graphics g) {
 
         g.setColor(Color.black);
-        g.fillRect(0, 0, Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
+        g.fillRect(0, 0, boardwidth, boardheight);
 
         g.setColor(new Color(0, 32, 48));
-        g.fillRect(50, Commons.BOARD_WIDTH / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
+        g.fillRect(50, boardwidth / 2 - 30, boardwidth - 100, 50);
         g.setColor(Color.white);
-        g.drawRect(50, Commons.BOARD_WIDTH / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
+        g.drawRect(50, boardwidth / 2 - 30, boardwidth - 100, 50);
 
         Font small = new Font("Helvetica", Font.BOLD, 14);
         FontMetrics fontMetrics = this.getFontMetrics(small);
 
         g.setColor(Color.white);
         g.setFont(small);
-        g.drawString(message, (Commons.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2,
-                Commons.BOARD_WIDTH / 2);
+        g.drawString(message, (boardwidth - fontMetrics.stringWidth(message)) / 2,
+                boardwidth / 2);
     }
 
 

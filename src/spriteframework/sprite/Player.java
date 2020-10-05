@@ -11,20 +11,26 @@ public class Player extends Sprite {
 
     private int width;
     private int height;
+    private int boardwidth;
+    private int boardheight;
+    
     private Boolean Twodimensions;
 
-    public Player(String playerdir, Boolean Twodimension) {
-        loadImage(playerdir);
+    public Player(String playerdir, Boolean Twodimension, int playerwidth, int playerheight, int boardwidth, int boardheight) {
+        loadImage(playerdir, playerwidth, playerheight);
+        this.boardheight = boardheight;
+        this.boardwidth = boardwidth;
 		getImageDimensions();
 		resetState();
 		this.Twodimensions = Twodimension; 
     }
 
-    protected void loadImage (String playerdir) {
+    protected void loadImage (String playerdir, int w, int h) {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(playerdir));
-        width = ii.getImage().getWidth(null);
-        height = ii.getImage().getHeight(null);
-        setImage(ii.getImage());
+        Image scaledImage = ii.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
+        width = w;
+        height = h;
+        setImage(scaledImage);
     }
     
     public void act() {
@@ -43,14 +49,14 @@ public class Player extends Sprite {
                 y = 2;
             }
 
-            if (x >= Commons.BOARD_WIDTH - 2 * width) {
+            if (x >= boardwidth - 2 * width) {
 
-                x = Commons.BOARD_WIDTH - 2 * width;
+                x = boardwidth - 2 * width;
             }
             
-            if (y >= Commons.BOARD_HEIGHT - 2 * height) {
+            if (y >= boardheight - 2 * height) {
 
-                y = Commons.BOARD_HEIGHT - 2 * height;
+                y = boardheight - 2 * height;
             }
         }
         
@@ -61,9 +67,9 @@ public class Player extends Sprite {
                 }
 
 
-                if (x >= Commons.BOARD_WIDTH - 2 * width) {
+                if (x >= boardwidth - 2 * width) {
 
-                    x = Commons.BOARD_WIDTH - 2 * width;
+                    x = boardwidth - 2 * width;
                 }
 
             

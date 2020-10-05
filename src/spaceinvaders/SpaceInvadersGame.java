@@ -9,7 +9,7 @@ public class SpaceInvadersGame extends MainFrame {
 
 
 	public SpaceInvadersGame () {
-		super("Space Invaders", "/images/player.png");
+		super("Space Invaders", "/images/player.png", CommonsSpaceInvaders.BOARD_WIDTH, CommonsSpaceInvaders.BOARD_HEIGHT);
 	}
 	
 	protected  AbstractBoard createBoard() {
