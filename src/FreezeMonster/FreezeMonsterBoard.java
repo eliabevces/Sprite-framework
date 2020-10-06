@@ -16,11 +16,13 @@ import spriteframework.AbstractBoard;
 import spriteframework.sprite.BadSprite;
 import spriteframework.sprite.Player;
 
-import spaceinvaders.sprite.*;
+// import spaceinvaders.sprite.*;
 
 public class FreezeMonsterBoard extends AbstractBoard{  
 
-	public FreezeMonsterBoard(String playerdir, Boolean Twodimension) {
+    private static final long serialVersionUID = 1L;
+
+    public FreezeMonsterBoard(String playerdir, Boolean Twodimension) {
 		super(playerdir, Twodimension, CommonsfreezeMonster.ALIEN_WIDTH, CommonsfreezeMonster.ALIEN_HEIGHT, CommonsfreezeMonster.BOARD_WIDTH, CommonsfreezeMonster.BOARD_HEIGHT, CommonsfreezeMonster.GROUND);
 		// TODO Auto-generated constructor stub
 	}

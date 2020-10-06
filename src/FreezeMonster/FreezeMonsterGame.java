@@ -7,7 +7,9 @@ import spriteframework.MainFrame;
 
 public class FreezeMonsterGame extends MainFrame {
 
-	public FreezeMonsterGame () {
+	private static final long serialVersionUID = 1L;
+
+	public FreezeMonsterGame() {
 		
 		super("Freeze Monster","/images/woody.png", CommonsfreezeMonster.BOARD_WIDTH, CommonsfreezeMonster.BOARD_HEIGHT);
 	}

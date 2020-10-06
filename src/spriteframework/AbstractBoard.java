@@ -24,6 +24,8 @@ import java.util.LinkedList;
 
 public abstract class AbstractBoard extends JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     protected Dimension d;
     
     //define sprites

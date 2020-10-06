@@ -5,7 +5,8 @@ import java.awt.Image;
 import javax.swing.*; 
 public class TestImage extends JPanel { 
 
-   // Colocar a pasta image na raiz do projeto 
+   private static final long serialVersionUID = 1L;
+   // Colocar a pasta image na raiz do projeto
    String imageLocation = "/images/woody.png";
    ImageIcon ii = new ImageIcon(this.getClass().getResource(imageLocation));
    Image scaledImage = ii.getImage().getScaledInstance(30, 50, Image.SCALE_SMOOTH);

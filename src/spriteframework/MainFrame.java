@@ -3,7 +3,10 @@ package spriteframework;
 import javax.swing.JFrame;
 
 public abstract class MainFrame extends JFrame  {
-	//passar todos os objetos unicos por aq
+
+	private static final long serialVersionUID = 1L;
+
+	// passar todos os objetos unicos por aq
     // hotspot
     protected abstract AbstractBoard createBoard();
     
