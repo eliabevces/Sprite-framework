@@ -8,6 +8,8 @@ public class Sprite {
     private boolean visible;
     protected Image image;
     private boolean dying;
+    private boolean dyingvisible;
+
 
     protected int x;
     protected int y;
@@ -26,6 +28,7 @@ public class Sprite {
 
         visible = false;
     }
+    
 
     public boolean isVisible() {
 
@@ -92,10 +95,19 @@ public class Sprite {
 
         this.dying = dying;
     }
+    public void setDyingvisible(boolean dying) {
+
+    	this.dyingvisible = dying;
+    }
 
     public boolean isDying() {
 
         return this.dying;
+    }
+    
+    public boolean isDyingvisible() {
+
+        return this.dyingvisible;
     }
     
     public void moveX(int direction) {

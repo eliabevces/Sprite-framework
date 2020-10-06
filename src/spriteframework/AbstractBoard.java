@@ -120,6 +120,7 @@ public abstract class AbstractBoard extends JPanel {
 
                 bad.die();
             }
+            
             if (bad.getBadnesses()!= null) {
             	for (BadSprite badness: bad.getBadnesses()) {
             		if (!badness.isDestroyed()) {

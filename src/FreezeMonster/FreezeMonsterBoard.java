@@ -2,7 +2,7 @@ package FreezeMonster;
 
 
 import java.awt.Graphics;
-
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
 import java.util.Random;
@@ -113,28 +113,27 @@ public class FreezeMonsterBoard extends AbstractBoard{
         // player
         for (Player player: players) {
         	player.act();
-        	System.out.println("DX: " + player.getDx());
-            System.out.println("DY: " + player.getDy());        }
+        }
         // shot
         if (shot.isVisible()) {
 
             int shotX = shot.getX();
             int shotY = shot.getY();
-
+            int i = 0;
             for (BadSprite alien : badSprites) {
-
+            	i++;
                 int alienX = alien.getX();
                 int alienY = alien.getY();
 
-                if (alien.isVisible() && shot.isVisible()) {
+                if (!alien.isDyingvisible() && shot.isVisible()) {
                     if (shotX >= (alienX)
                             && shotX <= (alienX + CommonsfreezeMonster.ALIEN_WIDTH)
                             && shotY >= (alienY)
                             && shotY <= (alienY + CommonsfreezeMonster.ALIEN_HEIGHT)) {
-
-                        ImageIcon ii = new ImageIcon(explImg);
-                        alien.setImage(ii.getImage());
-                        alien.setDying(true);
+                        ImageIcon ii = new ImageIcon("images/monster"+i+"bg.png");
+                        Image scaledImage = ii.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+                        alien.setImage(scaledImage);
+                        alien.setDyingvisible(true);
                         deaths++;
                         shot.die();
                     }
@@ -175,7 +174,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
 
             int x = alien.getX();
 
-            if (x >= CommonsfreezeMonster.BOARD_WIDTH - CommonsfreezeMonster.BORDER_RIGHT && direction != -1) {
+            if (x >= CommonsfreezeMonster.BOARD_WIDTH - CommonsfreezeMonster.BORDER_RIGHT && direction != -1 && !alien.isDyingvisible()) {
 
                 direction = -1;
 
@@ -183,11 +182,13 @@ public class FreezeMonsterBoard extends AbstractBoard{
 
                 while (i1.hasNext()) {
                     BadSprite a2 = i1.next();
-                    a2.setY(a2.getY() + CommonsfreezeMonster.GO_DOWN);
+                    if(!a2.isDyingvisible()) {
+                        a2.setY(a2.getY() + CommonsfreezeMonster.GO_DOWN);
+                    }
                 }
             }
 
-            if (x <= CommonsfreezeMonster.BORDER_LEFT && direction != 1) {
+            if (x <= CommonsfreezeMonster.BORDER_LEFT && direction != 1 && !alien.isDyingvisible()) {
 
                 direction = 1;
 
@@ -196,7 +197,10 @@ public class FreezeMonsterBoard extends AbstractBoard{
                 while (i2.hasNext()) {
 
                     BadSprite a = i2.next();
-                    a.setY(a.getY() + CommonsfreezeMonster.GO_DOWN);
+                    if(!a.isDyingvisible()) {
+                    	a.setY(a.getY() + CommonsfreezeMonster.GO_DOWN);
+                    }
+                    
                 }
             }
         }
@@ -207,7 +211,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
 
             BadSprite alien = it.next();
 
-            if (alien.isVisible()) {
+            if (!alien.isDyingvisible()) {
 
                 int y = alien.getY();
 
@@ -234,7 +238,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
             int shot = generator.nextInt(15);
             BombfreezeMonster bomb = ((BomberSpritefreezeMonster)alien).getBomb();
 
-            if (shot == CommonsfreezeMonster.CHANCE && alien.isVisible() && bomb.isDestroyed()) {
+            if (shot == CommonsfreezeMonster.CHANCE && !(alien.isDyingvisible()) && bomb.isDestroyed()) {
 
                 bomb.setDestroyed(false);
                 bomb.setX(alien.getX());
