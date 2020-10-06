@@ -31,7 +31,7 @@ public class Player extends Sprite {
         width = w;
         height = h;
         setImage(scaledImage);
-    }
+    } 
     
     public void act() {
 

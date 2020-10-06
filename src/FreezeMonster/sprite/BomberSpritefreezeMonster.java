@@ -2,6 +2,8 @@ package FreezeMonster.sprite;
 
 import java.util.LinkedList;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 import spriteframework.sprite.BadSprite;
@@ -23,10 +25,10 @@ public class BomberSpritefreezeMonster extends BadnessBoxSprite {
 
         bomb = new BombfreezeMonster(x, y);
 
-        String alienImg = "images/alien.png";  // colocar codigo de figura de escala antes de mudar a imagem, se não fica muito grande
+        String alienImg = "images/monster1.png";  // colocar codigo de figura de escala antes de mudar a imagem, se nï¿½o fica muito grande
         ImageIcon ii = new ImageIcon(alienImg);
-
-        setImage(ii.getImage());
+        Image scaledImage = ii.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        setImage(scaledImage);
     }
 
 

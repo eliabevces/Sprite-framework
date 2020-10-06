@@ -1,7 +1,7 @@
 package FreezeMonster.sprite;
 
 import javax.swing.ImageIcon;
-
+import java.awt.Image;
 import spriteframework.sprite.BadSprite;
 
 public class BombfreezeMonster extends BadSprite {
@@ -20,9 +20,10 @@ public class BombfreezeMonster extends BadSprite {
         this.x = x;
         this.y = y;
 
-        String bombImg = "images/bomb.png"; // colocar codigo de figura de escala antes de mudar a imagem, se não fica muito grande
+        String bombImg = "images/gosma.png"; // colocar codigo de figura de escala antes de mudar a imagem, se nï¿½o fica muito grande
         ImageIcon ii = new ImageIcon(bombImg);
-        setImage(ii.getImage());
+        Image scaledImage = ii.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        setImage(scaledImage);
     }
 
     public void setDestroyed(boolean destroyed) {

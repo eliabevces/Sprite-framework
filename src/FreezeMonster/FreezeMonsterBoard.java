@@ -19,17 +19,11 @@ import spriteframework.sprite.Player;
 import spaceinvaders.sprite.*;
 
 public class FreezeMonsterBoard extends AbstractBoard{  
-   
-
-
 
 	public FreezeMonsterBoard(String playerdir, Boolean Twodimension) {
 		super(playerdir, Twodimension, CommonsfreezeMonster.ALIEN_WIDTH, CommonsfreezeMonster.ALIEN_HEIGHT, CommonsfreezeMonster.BOARD_WIDTH, CommonsfreezeMonster.BOARD_HEIGHT, CommonsfreezeMonster.GROUND);
 		// TODO Auto-generated constructor stub
 	}
-
-
-
 
 	//define sprites
     //private List<BadSprite> aliens;
@@ -41,9 +35,6 @@ public class FreezeMonsterBoard extends AbstractBoard{
 
 
     private String explImg = "images/explosion.png";
-
-
-
 
     protected void createBadSprites() {  // create sprites
             for (int j = 0; j < 9; j++) {
@@ -68,7 +59,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
 
     // Override
     protected void drawOtherSprites(Graphics g) {
-            drawShot(g);
+        drawShot(g);
     }
     
     protected void processOtherSprites(Player player, KeyEvent e) {

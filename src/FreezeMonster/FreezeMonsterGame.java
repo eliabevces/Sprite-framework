@@ -7,7 +7,6 @@ import spriteframework.MainFrame;
 
 public class FreezeMonsterGame extends MainFrame {
 
-
 	public FreezeMonsterGame () {
 		
 		super("Freeze Monster","/images/woody.png", CommonsfreezeMonster.BOARD_WIDTH, CommonsfreezeMonster.BOARD_HEIGHT);
@@ -23,7 +22,7 @@ public class FreezeMonsterGame extends MainFrame {
 		EventQueue.invokeLater(() -> {
 
 			new FreezeMonsterGame();
-		});
+		}); 
 	}
 
 }
