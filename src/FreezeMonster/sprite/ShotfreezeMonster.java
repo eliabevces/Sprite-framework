@@ -3,7 +3,7 @@ package FreezeMonster.sprite;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 
-import spriteframework.sprite.BadSprite;
+import spriteframework.sprite.BadSprite; 
 
 
 public class ShotfreezeMonster extends BadSprite {

@@ -41,7 +41,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
     protected void createBadSprites() {  // create sprites
             for (int j = 0; j < 9; j++) {
             	BomberSpritefreezeMonster alien = new BomberSpritefreezeMonster(CommonsfreezeMonster.ALIEN_INIT_X + 18 * (int)(Math.random()*10) ,
-                        CommonsfreezeMonster.ALIEN_INIT_Y + 18 * (int)(Math.random()*10)); //cria aliens em lugares aleatorios
+                        CommonsfreezeMonster.ALIEN_INIT_Y + 18 * (int)(Math.random()*10), j); //cria aliens em lugares aleatorios
                 badSprites.add(alien);
             }
         

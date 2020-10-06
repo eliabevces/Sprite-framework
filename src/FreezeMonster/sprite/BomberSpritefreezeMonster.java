@@ -13,19 +13,18 @@ public class BomberSpritefreezeMonster extends BadnessBoxSprite {
 
     private BombfreezeMonster bomb;
 
-    public BomberSpritefreezeMonster(int x, int y) {
+    public BomberSpritefreezeMonster(int x, int y, int j) {
 
-        initBomber(x, y);
+        initBomber(x, y, j);
     }
 
-    private void initBomber(int x, int y) {
+    private void initBomber(int x, int y, int j) {
 
         this.x = x;
         this.y = y;
 
         bomb = new BombfreezeMonster(x, y);
-
-        String alienImg = "images/monster1.png";  // colocar codigo de figura de escala antes de mudar a imagem, se n�o fica muito grande
+        String alienImg = "images/monster"+(j+1)+".png";  // colocar codigo de figura de escala antes de mudar a imagem, se n�o fica muito grande
         ImageIcon ii = new ImageIcon(alienImg);
         Image scaledImage = ii.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         setImage(scaledImage);
