@@ -86,20 +86,20 @@ public class Player extends Sprite {
         if(Twodimensions == true) { //permite mover para cima e para lados
         	if (key == KeyEvent.VK_LEFT) {
 
-                dx = -2;
+                dx = -2; // apertando <-
             }
 
             if (key == KeyEvent.VK_RIGHT) {
 
-                dx = 2;
+                dx = 2; // apertando ->
             }
             if (key == KeyEvent.VK_UP) {
 
-                dy = -1;
+                dy = -1; // apertando ^
             }
             if (key == KeyEvent.VK_DOWN) {
 
-                dy = 1;
+                dy = 1; // apertando v
             }
         }
         

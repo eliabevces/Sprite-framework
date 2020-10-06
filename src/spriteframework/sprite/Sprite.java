@@ -103,7 +103,15 @@ public class Sprite {
         this.x += direction;
     }
     
-    public void moveY(int direction) {
+    public int getDx() {
+		return dx;
+	}
+
+	public int getDy() {
+		return dy;
+	}
+
+	public void moveY(int direction) {
 
         this.y += direction;
     }

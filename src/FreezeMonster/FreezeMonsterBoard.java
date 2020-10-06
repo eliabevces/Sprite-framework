@@ -34,7 +34,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
     // define global control vars   
     private int direction = -1;
     private int deaths = 0;
-
+    private int direc = 0;
 
     private String explImg = "images/explosion.png";
 
@@ -111,9 +111,10 @@ public class FreezeMonsterBoard extends AbstractBoard{
         }
 
         // player
-        for (Player player: players) 
+        for (Player player: players) {
         	player.act();
-
+        	System.out.println("DX: " + player.getDx());
+            System.out.println("DY: " + player.getDy());        }
         // shot
         if (shot.isVisible()) {
 
@@ -139,14 +140,32 @@ public class FreezeMonsterBoard extends AbstractBoard{
                     }
                 }
             }
-
+            int x = shot.getX();
             int y = shot.getY();
-            y -= 4;
+            if((players.get(0).getDy()==-1 && players.get(0).getDx()==0 && direc == 0) || direc == 1 ) { //tiro para cima
+            	y -= 4;
+            	direc = 1;
+            }
+            if((players.get(0).getDy()==1 && players.get(0).getDx()==0 && direc == 0) || direc == 2 ) { //tiro para baixo
+            	y += 4;
+            	direc = 2;
+            }
+            if((players.get(0).getDy()==0 && players.get(0).getDx()==2 && direc == 0) || direc == 3 ) { //tiro para direita
+            	x += 4;
+            	direc = 3;
+            }
+            if((players.get(0).getDy()==0 && players.get(0).getDx()==-2 && direc == 0) || direc == 4 ) { //tiro para esquerda
+            	x -= 4;
+            	direc = 4;
+            }
+            
 
-            if (y < 0) {
+            if (y < 0 || y >=CommonsfreezeMonster.BOARD_HEIGHT || x < 0 || x>=CommonsfreezeMonster.BOARD_WIDTH) {
                 shot.die();
+                direc = 0;
             } else {
                 shot.setY(y);
+                shot.setX(x);
             }
         }
 
