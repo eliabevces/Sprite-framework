@@ -4,7 +4,9 @@ package FreezeMonster;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -173,6 +175,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
         for (BadSprite alien : badSprites) {
 
             int x = alien.getX();
+            int y = alien.getY();
 
             if (x >= CommonsfreezeMonster.BOARD_WIDTH - CommonsfreezeMonster.BORDER_RIGHT && direction != -1 && !alien.isDyingvisible()) {
 
@@ -232,14 +235,21 @@ public class FreezeMonsterBoard extends AbstractBoard{
 	
     protected void updateOtherSprites() {
 		Random generator = new Random();
-
+		List<Integer> list = new ArrayList<>();
+        list.add(-1);
+        list.add(1);
+        int y = list.get(generator.nextInt(2));
+        int x = list.get(generator.nextInt(2));
         for (BadSprite alien : badSprites) {
 
             int shot = generator.nextInt(15);
+            int temp = generator.nextInt(4);
             BombfreezeMonster bomb = ((BomberSpritefreezeMonster)alien).getBomb();
-
+            
+            if(bomb.isDirecao() == 0) {
+            	bomb.setDirecao(new Random().nextInt(8)+1);
+            }
             if (shot == CommonsfreezeMonster.CHANCE && !(alien.isDyingvisible()) && bomb.isDestroyed()) {
-
                 bomb.setDestroyed(false);
                 bomb.setX(alien.getX());
                 bomb.setY(alien.getY());
@@ -265,10 +275,42 @@ public class FreezeMonsterBoard extends AbstractBoard{
             }
 
             if (!bomb.isDestroyed()) {
-
-                bomb.setY(bomb.getY() + 1);
-
-                if (bomb.getY() >= CommonsfreezeMonster.GROUND - CommonsfreezeMonster.BOMB_HEIGHT) {
+            	
+            	if(bomb.isDirecao() == 1) {
+            		bomb.setY(bomb.getY() - 1);
+                    bomb.setX(bomb.getX() - 1);
+            	}
+            	if(bomb.isDirecao() == 2) {
+            		bomb.setY(bomb.getY() + 1);
+                    bomb.setX(bomb.getX() - 1);
+            	}
+            	if(bomb.isDirecao() == 3) {
+            		bomb.setY(bomb.getY() - 1);
+                    bomb.setX(bomb.getX() + 1);
+            	}
+            	if(bomb.isDirecao() == 4) {
+            		bomb.setY(bomb.getY() + 1);
+                    bomb.setX(bomb.getX() + 1);
+            	}
+            	if(bomb.isDirecao() == 5) {
+            		bomb.setY(bomb.getY());
+                    bomb.setX(bomb.getX() - 1);
+            	}
+            	if(bomb.isDirecao() == 6) {
+            		bomb.setY(bomb.getY() - 1);
+                    bomb.setX(bomb.getX());
+            	}
+            	if(bomb.isDirecao() == 7) {
+            		bomb.setY(bomb.getY());
+                    bomb.setX(bomb.getX() + 1);
+            	}
+            	if(bomb.isDirecao() == 8) {
+            		bomb.setY(bomb.getY() + 1);
+                    bomb.setX(bomb.getX());
+            	}
+            	
+                
+                if (bomb.getY() >= CommonsfreezeMonster.GROUND - CommonsfreezeMonster.BOMB_HEIGHT || bomb.getY()<= 0 || bomb.getX() <= 0 || bomb.getX() >=  CommonsfreezeMonster.BOARD_WIDTH) {
 
                     bomb.setDestroyed(true);
                 }

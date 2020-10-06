@@ -7,8 +7,11 @@ import spriteframework.sprite.BadSprite;
 public class BombfreezeMonster extends BadSprite {
 
     private boolean destroyed;
+    private int direcao=0;
 
-    public BombfreezeMonster(int x, int y) {
+    
+
+	public BombfreezeMonster(int x, int y) {
 
         initBomb(x, y);
     }
@@ -35,6 +38,14 @@ public class BombfreezeMonster extends BadSprite {
 
         return destroyed;
     }
+    
+    public int isDirecao() {
+		return direcao;
+	}
+
+	public void setDirecao(int direcao) {
+		this.direcao = direcao;
+	}
     
     
 }

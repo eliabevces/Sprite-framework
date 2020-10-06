@@ -5,11 +5,11 @@ public interface CommonsfreezeMonster extends spriteframework.Commons{
 
     int BOMB_HEIGHT = 10;
 
-    int ALIEN_HEIGHT = 25;
-    int ALIEN_WIDTH = 25;
+    int ALIEN_HEIGHT = 20;
+    int ALIEN_WIDTH = 20;
     int ALIEN_INIT_X = 150;
     int ALIEN_INIT_Y = 5;
-    int GROUND = 470;
+    int GROUND = 500;
     int GO_DOWN = 15;
     int NUMBER_OF_ALIENS_TO_DESTROY = 9;
     int CHANCE = 5;
