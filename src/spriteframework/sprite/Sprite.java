@@ -17,9 +17,10 @@ public class Sprite {
     protected int imageHeight;
     protected int dx;
     protected int dy;
+    protected int direcaomonstro = 0;
 
 
-    public Sprite() {
+	public Sprite() {
 
         visible = true;
     }
@@ -127,4 +128,13 @@ public class Sprite {
 
         this.y += direction;
     }
+	
+    public int getDirecaomonstro() {
+		return direcaomonstro;
+	}
+
+	public void setDirecaomonstro(int direcaomonstro) {
+		this.direcaomonstro = direcaomonstro;
+	}
+
 }

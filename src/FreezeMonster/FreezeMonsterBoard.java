@@ -177,53 +177,105 @@ public class FreezeMonsterBoard extends AbstractBoard{
             int x = alien.getX();
             int y = alien.getY();
 
-            if (x >= CommonsfreezeMonster.BOARD_WIDTH - CommonsfreezeMonster.BORDER_RIGHT && direction != -1 && !alien.isDyingvisible()) {
-
-                direction = -1;
-
-                Iterator<BadSprite> i1 = badSprites.iterator();
-
-                while (i1.hasNext()) {
-                    BadSprite a2 = i1.next();
-                    if(!a2.isDyingvisible()) {
-                        a2.setY(a2.getY() + CommonsfreezeMonster.GO_DOWN);
-                    }
+            if (x >= CommonsfreezeMonster.BOARD_WIDTH - CommonsfreezeMonster.BORDER_RIGHT && !alien.isDyingvisible()) {
+                
+            	int temp = new Random().nextInt(3);
+                if(temp == 0) {
+                	alien.setDirecaomonstro(2);
                 }
+                if(temp == 1) {
+                	alien.setDirecaomonstro(7);
+                }
+                if(temp == 2) {
+                	alien.setDirecaomonstro(3);
+                }
+          
             }
 
-            if (x <= CommonsfreezeMonster.BORDER_LEFT && direction != 1 && !alien.isDyingvisible()) {
+            if (x <= CommonsfreezeMonster.BORDER_LEFT && !alien.isDyingvisible()) {
+            	int temp = new Random().nextInt(3);
+                if(temp == 0) {
+                	alien.setDirecaomonstro(4);
+                }
+                if(temp == 1) {
+                	alien.setDirecaomonstro(5);
+                }
+                if(temp == 2) {
+                	alien.setDirecaomonstro(1);
+                }
+            }
+            if (y >= CommonsfreezeMonster.BOARD_HEIGHT - 50 && !alien.isDyingvisible()) {
+                int temp = new Random().nextInt(3);
+                if(temp == 0) {
+                	alien.setDirecaomonstro(2);
+                }
+                if(temp == 1) {
+                	alien.setDirecaomonstro(8);
+                }
+                if(temp == 2) {
+                	alien.setDirecaomonstro(4);
+                }
+          
+            }
 
-                direction = 1;
+            if (y <= 0 && !alien.isDyingvisible()) {
 
-                Iterator<BadSprite> i2 = badSprites.iterator();
-
-                while (i2.hasNext()) {
-
-                    BadSprite a = i2.next();
-                    if(!a.isDyingvisible()) {
-                    	a.setY(a.getY() + CommonsfreezeMonster.GO_DOWN);
-                    }
-                    
+            	int temp = new Random().nextInt(3);
+                if(temp == 0) {
+                	alien.setDirecaomonstro(3);
+                }
+                if(temp == 1) {
+                	alien.setDirecaomonstro(6);
+                }
+                if(temp == 2) {
+                	alien.setDirecaomonstro(1);
                 }
             }
         }
 
         Iterator<BadSprite> it = badSprites.iterator();
-
+       
         while (it.hasNext()) {
 
             BadSprite alien = it.next();
-
+            if(alien.getDirecaomonstro()==0) {
+            	alien.setDirecaomonstro(new Random().nextInt(8)+1);
+            }
             if (!alien.isDyingvisible()) {
 
                 int y = alien.getY();
 
-                if (y > CommonsfreezeMonster.GROUND - CommonsfreezeMonster.ALIEN_HEIGHT) {
-                    inGame = false;
-                    message = "Invasion!";
-                }
 
-                alien.moveX(direction);
+                if(alien.getDirecaomonstro() == 1) {
+                	alien.moveX(1);
+                    alien.moveY(1);
+            	}
+                if(alien.getDirecaomonstro() == 2) {
+                	alien.moveX(-1);
+                    alien.moveY(-1);
+            	}
+                if(alien.getDirecaomonstro() == 3) {
+                	alien.moveX(-1);
+                    alien.moveY(1);
+            	}
+                if(alien.getDirecaomonstro() == 4) {
+                	alien.moveX(1);
+                    alien.moveY(-1);
+            	}
+                if(alien.getDirecaomonstro() == 5) {
+                	alien.moveX(1);
+            	}
+                if(alien.getDirecaomonstro() == 6) {
+                    alien.moveY(1);
+            	}
+                if(alien.getDirecaomonstro() == 7) {
+                	alien.moveX(-1);
+            	}
+                if(alien.getDirecaomonstro() == 8) {
+                    alien.moveY(-1);
+            	}
+                
+                
             }
         }
 
@@ -235,15 +287,10 @@ public class FreezeMonsterBoard extends AbstractBoard{
 	
     protected void updateOtherSprites() {
 		Random generator = new Random();
-		List<Integer> list = new ArrayList<>();
-        list.add(-1);
-        list.add(1);
-        int y = list.get(generator.nextInt(2));
-        int x = list.get(generator.nextInt(2));
+
         for (BadSprite alien : badSprites) {
 
             int shot = generator.nextInt(15);
-            int temp = generator.nextInt(4);
             BombfreezeMonster bomb = ((BomberSpritefreezeMonster)alien).getBomb();
             
             if(bomb.isDirecao() == 0) {
