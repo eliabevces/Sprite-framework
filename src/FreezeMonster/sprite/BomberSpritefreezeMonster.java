@@ -6,6 +6,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import FreezeMonster.CommonsfreezeMonster;
 import spriteframework.sprite.BadSprite;
 import spriteframework.sprite.BadnessBoxSprite;
 
@@ -26,7 +27,7 @@ public class BomberSpritefreezeMonster extends BadnessBoxSprite {
         bomb = new BombfreezeMonster(x, y);
         String alienImg = "images/monster"+(j+1)+".png";  // colocar codigo de figura de escala antes de mudar a imagem, se n�o fica muito grande
         ImageIcon ii = new ImageIcon(alienImg);
-        Image scaledImage = ii.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        Image scaledImage = ii.getImage().getScaledInstance(CommonsfreezeMonster.ALIEN_WIDTH, CommonsfreezeMonster.ALIEN_HEIGHT, Image.SCALE_SMOOTH);
         setImage(scaledImage);
     }
 

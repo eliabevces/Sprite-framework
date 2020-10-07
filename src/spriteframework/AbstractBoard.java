@@ -42,6 +42,7 @@ public abstract class AbstractBoard extends JPanel {
     protected int boardwidth;
     protected int boardheight;
     protected int ground;
+    protected Color backgroundColor;
     
     private int numberPlayers;  // to do - future use
     protected boolean inGame = true;
@@ -60,10 +61,11 @@ public abstract class AbstractBoard extends JPanel {
     protected abstract void update();
     protected abstract void processOtherSprites(Player player, KeyEvent e);
 
-    public AbstractBoard(String playerdir, Boolean Twodimension,  int widthplayer, int heightplayer, int boardwidth,int boardheight, int ground) {
+    public AbstractBoard(String playerdir, Boolean Twodimension,  int widthplayer, int heightplayer, int boardwidth,int boardheight, int ground, Color backgroundColor) {
     	this.boardwidth = boardwidth;
     	this.boardheight = boardheight;
     	this.ground = ground;
+    	this.backgroundColor = backgroundColor;
         initBoard(playerdir, Twodimension,  widthplayer,  heightplayer, boardwidth, boardheight);
         createPlayers(playerdir, Twodimension, widthplayer, heightplayer);
 		        numberPlayers = 1;
@@ -162,7 +164,7 @@ public abstract class AbstractBoard extends JPanel {
 
         g.setRenderingHint(RenderingHints.KEY_RENDERING,
                 RenderingHints.VALUE_RENDER_QUALITY);
-        g.setColor(Color.black);
+        g.setColor(backgroundColor);
         g.fillRect(0, 0, d.width, d.height);
         g.setColor(Color.green);
 

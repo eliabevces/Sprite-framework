@@ -25,7 +25,7 @@ public class SpaceInvadersBoard extends AbstractBoard{
 
 
 	public SpaceInvadersBoard(String playerdir, Boolean Twodimension) {
-		super(playerdir, Twodimension, CommonsSpaceInvaders.ALIEN_WIDTH, CommonsSpaceInvaders.ALIEN_HEIGHT, CommonsSpaceInvaders.BOARD_WIDTH, CommonsSpaceInvaders.BOARD_HEIGHT,CommonsSpaceInvaders.GROUND);
+		super(playerdir, Twodimension, CommonsSpaceInvaders.ALIEN_WIDTH, CommonsSpaceInvaders.ALIEN_HEIGHT, CommonsSpaceInvaders.BOARD_WIDTH, CommonsSpaceInvaders.BOARD_HEIGHT,CommonsSpaceInvaders.GROUND, CommonsSpaceInvaders.backgorundColor);
 		// TODO Auto-generated constructor stub
 	}
 

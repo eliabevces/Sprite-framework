@@ -1,5 +1,6 @@
 package spaceinvaders;
 
+import java.awt.Color;
 
 public interface CommonsSpaceInvaders extends spriteframework.Commons{
 
@@ -17,4 +18,5 @@ public interface CommonsSpaceInvaders extends spriteframework.Commons{
     int PLAYER_HEIGHT = 10;
     int BOARD_WIDTH = 358;
     int BOARD_HEIGHT = 350;
+    Color backgorundColor = Color.black;
 }

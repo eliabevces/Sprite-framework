@@ -1,6 +1,9 @@
 package FreezeMonster.sprite;
 
 import javax.swing.ImageIcon;
+
+import FreezeMonster.CommonsfreezeMonster;
+
 import java.awt.Image;
 import spriteframework.sprite.BadSprite;
 
@@ -25,7 +28,7 @@ public class BombfreezeMonster extends BadSprite {
 
         String bombImg = "images/gosma.png"; // colocar codigo de figura de escala antes de mudar a imagem, se n�o fica muito grande
         ImageIcon ii = new ImageIcon(bombImg);
-        Image scaledImage = ii.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        Image scaledImage = ii.getImage().getScaledInstance(CommonsfreezeMonster.ALIEN_WIDTH, CommonsfreezeMonster.ALIEN_HEIGHT, Image.SCALE_SMOOTH);
         setImage(scaledImage);
     }
 

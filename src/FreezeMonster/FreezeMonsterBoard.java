@@ -25,7 +25,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
     private static final long serialVersionUID = 1L;
 
     public FreezeMonsterBoard(String playerdir, Boolean Twodimension) {
-		super(playerdir, Twodimension, CommonsfreezeMonster.ALIEN_WIDTH, CommonsfreezeMonster.ALIEN_HEIGHT, CommonsfreezeMonster.BOARD_WIDTH, CommonsfreezeMonster.BOARD_HEIGHT, CommonsfreezeMonster.GROUND);
+		super(playerdir, Twodimension, CommonsfreezeMonster.PLAYER_WIDTH, CommonsfreezeMonster.PLAYER_HEIGHT, CommonsfreezeMonster.BOARD_WIDTH, CommonsfreezeMonster.BOARD_HEIGHT, CommonsfreezeMonster.GROUND, CommonsfreezeMonster.backgorundColor);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -133,7 +133,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
                             && shotY >= (alienY)
                             && shotY <= (alienY + CommonsfreezeMonster.ALIEN_HEIGHT)) {
                         ImageIcon ii = new ImageIcon("images/monster"+i+"bg.png");
-                        Image scaledImage = ii.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+                        Image scaledImage = ii.getImage().getScaledInstance(CommonsfreezeMonster.ALIEN_WIDTH, CommonsfreezeMonster.ALIEN_HEIGHT, Image.SCALE_SMOOTH);
                         alien.setImage(scaledImage);
                         alien.setDyingvisible(true);
                         deaths++;
@@ -306,13 +306,18 @@ public class FreezeMonsterBoard extends AbstractBoard{
             int bombY = bomb.getY();
             int playerX = players.get(0).getX();
             int playerY = players.get(0).getY();
-
+            int alienX = alien.getX();
+            int alienY = alien.getY();
             if (players.get(0).isVisible() && !bomb.isDestroyed()) {
 
                 if (bombX >= (playerX)
                         && bombX <= (playerX + CommonsfreezeMonster.PLAYER_WIDTH)
                         && bombY >= (playerY)
-                        && bombY <= (playerY + CommonsfreezeMonster.PLAYER_HEIGHT)) {
+                        && bombY <= (playerY + CommonsfreezeMonster.PLAYER_HEIGHT) ||
+                        (alienX >= (playerX)
+                        && alienX <= (playerX + CommonsfreezeMonster.PLAYER_WIDTH)
+                        && alienY >= (playerY)
+                        && alienY <= (playerY + CommonsfreezeMonster.PLAYER_HEIGHT) ) ){
 
                     ImageIcon ii = new ImageIcon(explImg);
                     players.get(0).setImage(ii.getImage());
