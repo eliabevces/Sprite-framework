@@ -18,5 +18,5 @@ public interface CommonsfreezeMonster extends spriteframework.Commons{
     int PLAYER_HEIGHT = 40;
     int BOARD_WIDTH = 700;
     int BOARD_HEIGHT = 700;
-    Color backgorundColor = Color.green;
+    Color backgorundColor = new Color(0, 150, 75);
 }

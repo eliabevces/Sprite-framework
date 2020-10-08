@@ -42,7 +42,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
 
     protected void createBadSprites() {  // create sprites
             for (int j = 0; j < 9; j++) {
-            	BomberSpritefreezeMonster alien = new BomberSpritefreezeMonster(CommonsfreezeMonster.ALIEN_INIT_X + 18 * (int)(Math.random()*10) ,
+            	BomberSpritefreezeMonster alien = new BomberSpritefreezeMonster(CommonsfreezeMonster.ALIEN_INIT_X + 28 * (int)(Math.random()*10) ,
                         CommonsfreezeMonster.ALIEN_INIT_Y + 18 * (int)(Math.random()*10), j); //cria aliens em lugares aleatorios
                 badSprites.add(alien);
             }
@@ -104,7 +104,6 @@ public class FreezeMonsterBoard extends AbstractBoard{
 //    }
 
     protected void update() {
-
         if (deaths == CommonsfreezeMonster.NUMBER_OF_ALIENS_TO_DESTROY) {
 
             inGame = false;
@@ -274,8 +273,7 @@ public class FreezeMonsterBoard extends AbstractBoard{
                 if(alien.getDirecaomonstro() == 8) {
                     alien.moveY(-1);
             	}
-                
-                
+                    
             }
         }
 
@@ -294,7 +292,17 @@ public class FreezeMonsterBoard extends AbstractBoard{
             BombfreezeMonster bomb = ((BomberSpritefreezeMonster)alien).getBomb();
             
             if(bomb.isDirecao() == 0) {
-            	bomb.setDirecao(new Random().nextInt(8)+1);
+                switch (alien.getDirecaomonstro()){
+                    case 1: bomb.setDirecao(3); break;
+                    case 2: bomb.setDirecao(8); break;
+                    case 3: bomb.setDirecao(2); break;
+                    case 4: bomb.setDirecao(7); break;
+                    case 5: bomb.setDirecao(4); break;
+                    case 6: bomb.setDirecao(5); break;
+                    case 7: bomb.setDirecao(6); break;
+                    case 8: bomb.setDirecao(1); break;
+                    default: bomb.setDirecao(new Random().nextInt(8)+1); break;
+                }
             }
             if (shot == CommonsfreezeMonster.CHANCE && !(alien.isDyingvisible()) && bomb.isDestroyed()) {
                 bomb.setDestroyed(false);
